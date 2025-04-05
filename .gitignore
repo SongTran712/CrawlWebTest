@@ -17,7 +17,8 @@ ENV/
 info/*.csv
 
 # Ignore consumer folder if you don't want to track it
-consumer/
+consumer/__pycache__/
+consumer/*.log
 
 # Ignore scrapy-related files in demo_scrapy
 demo_scrapy/__pycache__/
