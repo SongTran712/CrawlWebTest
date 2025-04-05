@@ -2,10 +2,14 @@
 
 ## 1. Tổng quan:
 Sử dụng Scrapy để crawl tài liệu từ 2 trang nhà thuê và nhà bán và các next page bên trong mỗi trang.
+
 Set up pipeline trong scrapy để thay vì xử lý ngay lập tức thì sẽ có 1 server khác xử lý thông qua Kafka như 1 message queue.
+
 Server xử lý sẽ store output vào trong csv file.
-Tạo 1 code làm sạch và lưu dữ liệu tổng quan vào trong Elasticsearch
-Sử dụng Agno và hình thành 1 tool truy vấn dữ liệu trong đó để phản hồi người dùng
+
+Tạo 1 code làm sạch và lưu dữ liệu tổng quan vào trong Elasticsearch.
+
+Sử dụng Agno và hình thành 1 tool truy vấn dữ liệu trong đó để phản hồi người dùng.
 
 
 
