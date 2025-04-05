@@ -1,0 +1,5 @@
+scrapy
+agno
+pandas
+kafka-python
+elasticsearch

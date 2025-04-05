@@ -1,0 +1,28 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Ignore IDE/editor settings
+.vscode/
+.idea/
+
+# Ignore CSV files in info
+info/*.csv
+
+# Ignore consumer folder if you don't want to track it
+consumer/
+
+# Ignore scrapy-related files in demo_scrapy
+demo_scrapy/__pycache__/
+demo_scrapy/*.log
+
+
+inference/__pycache__/
+inference/*.log
