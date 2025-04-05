@@ -10,7 +10,7 @@ from elasticsearch import Elasticsearch
 from sentence_transformers import SentenceTransformer
 import os
 
-os.environ['GROQ_API_KEY'] = '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'
+os.environ['GROQ_API_KEY'] = ''
 model = Groq(id="llama-3.3-70b-versatile")
 # model = Ollama(id="llama3.2:1b")
 embed_model = SentenceTransformer('all-mpnet-base-v2')
