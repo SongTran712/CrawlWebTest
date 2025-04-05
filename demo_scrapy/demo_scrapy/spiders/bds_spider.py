@@ -10,7 +10,7 @@ from scrapy.http import Request
 import time
 
 HEADERS = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             "Accept-Encoding": "gzip, deflate",
             "Connection": "keep-alive",
@@ -33,10 +33,8 @@ class BdsSpiderSpider(scrapy.Spider):
     name = "bds_spider"
     list_check = ["ban-can-ho-chung-cu?cIds=650,362,41,325,163,575,361,40,283,44,562,45,48"
                   , "cho-thue-can-ho-chung-cu?cIds=651,52,577,51,57,576,50,55,53,59"
-                  
     ]
-    # , "ban-nha-dat", "ban-trang-trai-khu-nghi-duong", "ban-kho-nha-xuong", "ban-loai-bat-dong-san-khac" 
-# "cho-thue-can-ho-chung-cu", "cho-thue-nha-rieng","cho-thue-nha-biet-thu-lien-ke", "cho-thue-nha-mat-pho","cho-thue-kho-nha-xuong-dat"]
+
     allowed_domains = ['batdongsan.com.vn']
     start_urls = list(map(lambda x: f"https://batdongsan.com.vn/{x}", list_check))
 
@@ -58,6 +56,8 @@ class BdsSpiderSpider(scrapy.Spider):
         'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
         'TELNETCONSOLE_ENABLED': False,
         'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+        'RETRY_TIMES' : 5,  # Number of retry attempts
+        'RETRY_HTTP_CODES' : [429, 403]
     }
     def start_requests(self):
         for url in self.start_urls:
@@ -80,9 +80,9 @@ class BdsSpiderSpider(scrapy.Spider):
             icon_class = button.css('i::attr(class)').get()  # Get the class of the <i> tag
             if 're__icon-chevron-right--sm' in icon_class:  # Check if this is the "next" button
                 next_page_url = button.attrib['href']
-                if next_page_url == "/ban-can-ho-chung-cu/p100?cIds=650,362,41,325,163,575,361,40,283,44,562,45,48" \
-                            or next_page_url == "/cho-thue-can-ho-chung-cu/p100?cIds=651,52,577,51,57,576,50,55,53,59":
-                    continue
+                # if next_page_url == "/ban-can-ho-chung-cu/p100?cIds=650,362,41,325,163,575,361,40,283,44,562,45,48" \
+                #             or next_page_url == "/cho-thue-can-ho-chung-cu/p100?cIds=651,52,577,51,57,576,50,55,53,59":
+                #     continue
                 next_page_url = response.urljoin(next_page_url)  # Convert relative URL to absolute URL
                 self.logger.info(f"Following next page: {next_page_url}")
                 yield response.follow(next_page_url, headers=  HEADERS, callback=self.parse)

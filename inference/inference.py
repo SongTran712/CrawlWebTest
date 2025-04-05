@@ -11,7 +11,7 @@ from elasticsearch import Elasticsearch
 from sentence_transformers import SentenceTransformer
 import os
 
-os.environ['GROQ_API_KEY'] = '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'
+os.environ['GROQ_API_KEY'] = ''
 model = Groq(id="llama-3.3-70b-versatile")
 # model = Ollama(id="llama3.2:1b")
 embed_model = SentenceTransformer('all-mpnet-base-v2')
