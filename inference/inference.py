@@ -2,7 +2,6 @@ from agno.agent import Agent, RunResponse
 from agno.models.groq import Groq
 from agno.models.ollama import Ollama
 from agno.tools.duckdb import DuckDbTools
-from clean_es import make_clean
 from textwrap import dedent
 import json 
 from typing import Optional
@@ -11,7 +10,7 @@ from elasticsearch import Elasticsearch
 from sentence_transformers import SentenceTransformer
 import os
 
-os.environ['GROQ_API_KEY'] = ''
+os.environ['GROQ_API_KEY'] = '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'
 model = Groq(id="llama-3.3-70b-versatile")
 # model = Ollama(id="llama3.2:1b")
 embed_model = SentenceTransformer('all-mpnet-base-v2')
@@ -73,5 +72,6 @@ agent = Agent(model=model,
     
     """),
               )
-
-agent.print_response("Tôi muốn thuê 1 ngôi nhà tại Long Biên")
+while True:
+    input_text = input("User: ")
+    agent.print_response(input_text)

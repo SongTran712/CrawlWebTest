@@ -53,5 +53,10 @@ python inference.py
 ```
 ## 6. Demo:
 
-GG Drive chứa file crawl từ web và đã lọc sạch:
+GG Drive chứa video thực hiện, file crawl từ web và file đã lọc sạch:
 
+https://drive.google.com/drive/u/0/folders/1fZRZDwcbaVxd6PcaROLeEpTuBlnJSFBp
+
+GG Drive chứa demo:
+
+https://drive.google.com/drive/u/0/folders/1HGI4lGCyNE_v92bT3qW7lSawTWf9jeon
